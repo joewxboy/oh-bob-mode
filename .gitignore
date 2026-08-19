@@ -1,0 +1,16 @@
+# ── Credentials and secrets ───────────────────────────────────────────────────
+# Never commit Exchange credentials, API keys, or environment files.
+# See PREREQUISITES.md for safe credential storage guidance.
+*.env
+*.creds
+.bob/oh-config.json
+
+# Local cert copies (Exchange CA certs should live in HZN_MGMT_HUB_CERT_PATH)
+*.crt
+*.pem
+
+# ── Node.js ───────────────────────────────────────────────────────────────────
+node_modules/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store

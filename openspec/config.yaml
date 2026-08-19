@@ -1,0 +1,54 @@
+schema: spec-driven
+
+context: |
+  ## Project: oh-bob-mode
+
+  This repo **is** a Bob Shell custom mode — not a project that uses Bob. The output is
+  configuration files and skill/rule markdown consumed by Bob Shell.
+
+  ### Tech stack
+  - Bob Shell custom mode (slug: `oh-dev`, name: "Open Horizon Development")
+  - MCP server: Node.js ≥18 ESM module at `.bob/mcp-servers/oh-exchange/index.js`
+    - Dependencies: `@modelcontextprotocol/sdk`, `node-fetch`
+    - Transport: stdio (not HTTP)
+    - Auth: `HZN_EXCHANGE_URL`, `HZN_ORG_ID`, `HZN_EXCHANGE_USER_AUTH` env vars
+  - Skills: markdown files with YAML frontmatter in `.bob/skills/<name>/SKILL.md`
+  - Slash commands: markdown in `.bob/commands/opsx-*.md`
+  - OpenSpec CLI: `openspec` (npm package, optional — required for /opsx-* commands)
+
+  ### Domain
+  Open Horizon edge computing platform — Exchange API, agent lifecycle, policy-based
+  service deployment, multi-platform edge nodes (Linux, macOS, containers).
+
+  ### Key conventions
+  - MCP JS: ESM imports with `.js` extension; `console.error` for logs (stdout = protocol)
+  - `ExchangeClient` is a singleton — never instantiate a second one
+  - Write tools call `this.checkPermission('admin')` before any mutating API call
+  - `alwaysAllow` in `mcp.json` contains ONLY read-only tools (list/get)
+  - Skill frontmatter: `name` (slug) and `description` (trigger text) are required
+  - Skill body: pure markdown, no nested frontmatter; keep under 500 lines
+  - Rules directories follow Bob's convention: `.bob/rules-<mode-slug>/AGENTS.md`
+  - `HZN_MGMT_HUB_CERT_PATH` must be set for self-signed Exchange TLS; the MCP server
+    reads it via `https.Agent({ ca })` and `check-prereqs.sh` uses `--cacert`
+
+  ### Credential management
+  - **oh-cred** (https://github.com/joewxboy/oh-cred) is the recommended credential broker:
+    vault-backed (OpenBao/Vault), inject-only, no print mode, per-hub path schema
+    `oh/hubs/<hub>/users/<org>/<user>`
+  - oh-cred sets `HZN_ORG_ID`, `HZN_EXCHANGE_USER_AUTH`, `HZN_EXCHANGE_URL`,
+    `HZN_FSS_CSSURL` — covers all required MCP server variables
+  - Plain env vars (`~/.hzn/credentials.env`) are the fallback for single-hub setups
+    where Vault is not yet available
+  - Credential format: `username:apikey` (Open Horizon) or `apikey:<key>` (IEAM)
+
+  ### Repository state
+  - One completed, archived OpenSpec change: `openspec/changes/archive/2026-08-14-oh-bob-mode/`
+  - No active changes — `openspec/changes/` only contains `archive/`
+  - All five domain skills are implemented (oh-agent-install, oh-service-lifecycle,
+    oh-deployment, oh-debugging, oh-hub-admin)
+  - `rules-oh-dev/` directory does not exist (skills serve the same function for oh-dev mode)
+
+  ### Extension points
+  - New Exchange API tools: extend the `switch` block in `index.js` + register in ListToolsRequestSchema
+  - New domain guidance: create `.bob/skills/<name>/SKILL.md`
+  - Mode-level always-on rules: create `.bob/rules-oh-dev/AGENTS.md`

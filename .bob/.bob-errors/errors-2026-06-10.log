@@ -1,0 +1,166 @@
+
+================================================================================
+ERROR LOGGED: 2026-06-10T13:02:50.825Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'figma': fetch failed
+
+Stack Trace:
+Error: Connection failed for 'figma': fetch failed
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T13:02:51.091Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+
+Stack Trace:
+Error: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T13:03:01.330Z
+User ID: joe.pearson@us.ibm.com
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'product-knowledge': SSE error: TypeError: fetch failed: Connect Timeout Error (attempted addresses: 9.208.81.18:443, 9.208.81.2:443, timeout: 10000ms)
+
+Stack Trace:
+Error: Connection failed for 'product-knowledge': SSE error: TypeError: fetch failed: Connect Timeout Error (attempted addresses: 9.208.81.18:443, 9.208.81.2:443, timeout: 10000ms)
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T18:09:57.650Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'figma': fetch failed
+
+Stack Trace:
+Error: Connection failed for 'figma': fetch failed
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T18:09:57.954Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+
+Stack Trace:
+Error: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T18:16:05.591Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'figma': fetch failed
+
+Stack Trace:
+Error: Connection failed for 'figma': fetch failed
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T18:16:05.823Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+
+Stack Trace:
+Error: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T20:00:07.407Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'figma': fetch failed
+
+Stack Trace:
+Error: Connection failed for 'figma': fetch failed
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T20:00:07.772Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+
+Stack Trace:
+Error: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T20:51:56.071Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'figma': fetch failed
+
+Stack Trace:
+Error: Connection failed for 'figma': fetch failed
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+
+
+================================================================================
+ERROR LOGGED: 2026-06-10T20:51:56.376Z
+================================================================================
+Error Name: Error
+Error Message: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+
+Stack Trace:
+Error: Connection failed for 'carbon': Streamable HTTP error: Error POSTing to endpoint: {"error":"Invalid token","detail":"\"exp\" claim timestamp check failed | Re-auth required: re-run the authorization flow to obtain a new auth code and session ID, then retry with the new Bearer token and X-MCP-Session."}
+    at $lr (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:10291)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async zwe.connect (file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:13137)
+    at async file:///opt/homebrew/lib/node_modules/bobshell/bundle/bob.js:3480:17293
+================================================================================
+

@@ -1,0 +1,17 @@
+{
+  "name": "oh-exchange-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Open Horizon Exchange API operations",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Open Horizon Bob Mode Configuration",
+  "description": "Configuration file schema for .bob/oh-config.json. Supports multiple Exchange profiles and remote node definitions.",
+  "type": "object",
+  "properties": {
+    "activeProfile": {
+      "type": "string",
+      "description": "Name of the profile to use when no environment variables are set."
+    },
+    "profiles": {
+      "type": "object",
+      "description": "Named Exchange environment profiles. Each key is a profile name (e.g. 'local', 'staging', 'production').",
+      "additionalProperties": {
+        "$ref": "#/definitions/Profile"
+      }
+    },
+    "remoteNodes": {
+      "type": "object",
+      "description": "Named remote edge node definitions for SSH-based operations.",
+      "additionalProperties": {
+        "$ref": "#/definitions/RemoteNode"
+      }
+    }
+  },
+  "definitions": {
+    "Profile": {
+      "type": "object",
+      "description": "An Exchange connection profile. Credentials may be inlined or referenced via 'env:VAR' syntax.",
+      "required": ["HZN_EXCHANGE_URL", "HZN_ORG_ID", "HZN_EXCHANGE_USER_AUTH"],
+      "properties": {
+        "HZN_EXCHANGE_URL": {
+          "type": "string",
+          "description": "Exchange server URL. Example: http://exchange.example.com:3090/v1"
+        },
+        "HZN_ORG_ID": {
+          "type": "string",
+          "description": "Organization ID for scoped operations.",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "HZN_EXCHANGE_USER_AUTH": {
+          "type": "string",
+          "description": "Credentials as 'username:password', 'username:apikey', or 'env:VAR_NAME' to read from environment variable."
+        },
+        "HZN_FSS_CSSURL": {
+          "type": "string",
+          "description": "CSS server URL for model management (optional)."
+        },
+        "HZN_AGBOT_URL": {
+          "type": "string",
+          "description": "Agreement bot URL (optional)."
+        },
+        "extends": {
+          "type": "string",
+          "description": "Name of a base profile to inherit from. Fields in this profile override the base."
+        }
+      },
+      "additionalProperties": false
+    },
+    "RemoteNode": {
+      "type": "object",
+      "description": "SSH-accessible remote edge node for remote agent inspection and debugging.",
+      "required": ["host", "sshUser", "agentType"],
+      "properties": {
+        "host": {
+          "type": "string",
+          "description": "Hostname or IP address of the remote node."
+        },
+        "sshUser": {
+          "type": "string",
+          "description": "SSH username with passwordless sudo access."
+        },
+        "sshKeyPath": {
+          "type": "string",
+          "description": "Path to SSH private key file (default: ~/.ssh/id_rsa)."
+        },
+        "agentType": {
+          "type": "string",
+          "enum": ["native", "container"],
+          "description": "'native' for systemd-managed agent, 'container' for podman/docker container agent."
+        },
+        "containerName": {
+          "type": "string",
+          "description": "Container name when agentType is 'container' (e.g. 'horizon1')."
+        },
+        "configPath": {
+          "type": "string",
+          "description": "Path to agent config file on remote node (e.g. /etc/default/horizon)."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
