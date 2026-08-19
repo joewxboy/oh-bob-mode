@@ -9,6 +9,11 @@ This is a **Bob Shell custom mode** workspace for Open Horizon edge computing. I
 ## Directory Structure
 
 ```
+LICENSE.md                     # Apache License 2.0
+MAINTAINERS.md                 # Active maintainers (Open Horizon table format)
+Makefile                       # install / check / test / clean targets
+CONTRIBUTING.md                # Contribution guidelines and DCO sign-off
+PREREQUISITES.md               # Full prerequisite checklist and automated checker
 .bob/
 ├── custom_modes.yaml          # Mode definition — slug must match rules-<slug>/ dirs
 ├── mcp.json                   # MCP server configuration (alwaysAllow = no approval prompt)
@@ -56,6 +61,23 @@ Slash commands and skills are equivalent (same logic, different invocation):
 - `openspec status --change "<name>" --json` returns `applyRequires`, `planningHome`, `changeRoot`, `actionContext`
 - Task completion: toggle `- [ ]` → `- [x]` in `tasks.md`
 - `context` and `rules` from `openspec instructions` are constraints for the agent — never copy them into artifact files
+
+## Makefile
+
+Four targets are provided for workspace maintenance:
+
+| Target | Command | Purpose |
+|--------|---------|---------|
+| `install` | `make install` | `npm install` in `.bob/mcp-servers/oh-exchange/` |
+| `check` | `make check` | Run `scripts/check-prereqs.sh` + MCP server syntax check |
+| `test` | `make test` | Start the MCP server on stdio (requires env vars; Ctrl+C to exit) |
+| `clean` | `make clean` | Remove `.bob/mcp-servers/oh-exchange/node_modules/` |
+
+## Contributing
+
+- All commits must be signed off: `git commit -s` (DCO — Developer Certificate of Origin)
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for the full fork/branch/PR workflow and project conventions
+- License: Apache 2.0 — contributions are covered under [LICENSE.md](LICENSE.md)
 
 ## Code Style (`index.js`)
 
