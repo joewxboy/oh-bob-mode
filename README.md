@@ -1,6 +1,11 @@
 # oh-bob-mode
 
+![License](https://img.shields.io/github/license/joewxboy/oh-bob-mode)
+![Contributors](https://img.shields.io/github/contributors/joewxboy/oh-bob-mode)
+
 A custom [Bob Shell](https://bob.ibm.com) mode that turns Bob into an **Open Horizon Development Expert** — providing guided workflows for agent installation, service publishing, deployment management, debugging, and Exchange administration.
+
+## Prerequisites
 
 See [PREREQUISITES.md](PREREQUISITES.md) for the full setup requirements, or run the automated checker:
 
@@ -17,6 +22,12 @@ bash scripts/check-prereqs.sh
 ## Setup (one-time)
 
 **1. Install MCP server dependencies:**
+
+```bash
+make install
+```
+
+Or manually:
 
 ```bash
 cd .bob/mcp-servers/oh-exchange
@@ -86,22 +97,14 @@ Five domain skills are loaded automatically when relevant:
 
 ## Testing
 
-**MCP server syntax:**
+**Run all prerequisite and syntax checks:**
 ```bash
-node --check .bob/mcp-servers/oh-exchange/index.js
+make check
 ```
 
-**Server startup (requires env vars set):**
+**Start the MCP server** (requires env vars set; Ctrl+C to exit):
 ```bash
-node .bob/mcp-servers/oh-exchange/index.js
-# Expected: "Open Horizon Exchange MCP server running on stdio"
-# Ctrl+C to exit
-```
-
-**Missing env var detection:**
-```bash
-node .bob/mcp-servers/oh-exchange/index.js
-# Expected: Fatal error: Missing required environment variables: ...
+make test
 ```
 
 **Quick validation checklist:**
@@ -116,6 +119,11 @@ ls openspec/specs/*/spec.md                          # main specs synced
 ## Repository Structure
 
 ```
+LICENSE.md                         # Apache License 2.0
+MAINTAINERS.md                     # Active maintainers list
+Makefile                           # install / check / test / clean targets
+CONTRIBUTING.md                    # Contribution guidelines and DCO
+PREREQUISITES.md                   # Full setup requirements
 .bob/
 ├── custom_modes.yaml              # Mode definition (slug: oh-dev)
 ├── mcp.json                       # MCP server config and alwaysAllow list
