@@ -21,6 +21,112 @@ bash scripts/check-prereqs.sh
 
 ## Setup (one-time)
 
+Choose **global installation** (recommended — available in every workspace) or **workspace installation** (mode lives only in this cloned repo).
+
+### Global installation (recommended)
+
+Install once and the mode, skills, MCP server, and slash commands are available in every workspace you open in Bob Shell.
+
+**1. Copy the MCP server to your home directory and install its dependencies:**
+
+```bash
+mkdir -p ~/.bob/mcp-servers
+cp -r .bob/mcp-servers/oh-exchange ~/.bob/mcp-servers/oh-exchange
+cd ~/.bob/mcp-servers/oh-exchange && npm install
+```
+
+**2. Add the MCP server entry to `~/.bob/mcp.json`** (create the file if it does not exist):
+
+```json
+{
+  "mcpServers": {
+    "open-horizon-exchange": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/YOUR/HOME/.bob/mcp-servers/oh-exchange/index.js"],
+      "alwaysAllow": [
+        "list_nodes", "get_node",
+        "list_services", "get_service",
+        "list_agreements", "get_agreement"
+      ]
+    }
+  }
+}
+```
+
+> Replace `/YOUR/HOME` with your actual home directory path (e.g. `/Users/yourname`). Use an absolute path — a relative path will not resolve correctly from arbitrary workspaces.
+>
+> If `~/.bob/mcp.json` already contains other MCP server entries, add `open-horizon-exchange` as an additional key inside the existing top-level object.
+
+**3. Append the `oh-dev` mode to `~/.bob/settings/custom_modes.yaml`** (create the file if it does not exist):
+
+```yaml
+customModes:
+  - slug: oh-dev
+    name: "Open Horizon Development"
+    roleDefinition: |
+      You are an Open Horizon Development Expert with deep expertise in:
+      - Distributed edge computing architecture and patterns
+      - Open Horizon Exchange API and agent lifecycle management
+      - Policy-based service deployment and agreement formation
+      - Multi-platform edge environments (Linux, macOS, containers)
+      - Service creation, publishing, versioning, and dependency management
+      - Debugging distributed edge systems and troubleshooting workflows
+      - Exchange administration, user management, and security best practices
+
+      You provide confident, accurate guidance for Open Horizon development workflows,
+      helping developers efficiently build, deploy, and manage edge services.
+    whenToUse: |
+      Use this mode when working with Open Horizon edge computing platform:
+      - Installing and configuring Horizon agents on edge nodes
+      - Creating, building, testing, and publishing edge services
+      - Managing deployment policies, patterns, and node configurations
+      - Debugging service deployments, agreements, and agent connectivity
+      - Administering the Exchange hub (users, organizations, resources)
+      - Troubleshooting distributed edge system issues
+      - Setting up multi-environment workflows (local, staging, production)
+    groups:
+      - read
+      - edit
+      - command
+      - browser
+      - mcp
+```
+
+> If `~/.bob/settings/custom_modes.yaml` already exists, add the `- slug: oh-dev` block as an additional entry under the existing `customModes:` list.
+
+**4. Copy the skills to `~/.bob/skills/`:**
+
+```bash
+cp -r \
+  .bob/skills/oh-agent-install \
+  .bob/skills/oh-debugging \
+  .bob/skills/oh-deployment \
+  .bob/skills/oh-hub-admin \
+  .bob/skills/oh-service-lifecycle \
+  .bob/skills/openspec-apply-change \
+  .bob/skills/openspec-archive-change \
+  .bob/skills/openspec-explore \
+  .bob/skills/openspec-propose \
+  .bob/skills/openspec-sync-specs \
+  ~/.bob/skills/
+```
+
+**5. Copy the slash commands to `~/.bob/commands/`:**
+
+```bash
+mkdir -p ~/.bob/commands
+cp .bob/commands/opsx-*.md ~/.bob/commands/
+```
+
+**6. Restart Bob Shell** to reload the global configuration. The **"Open Horizon Development"** mode will then appear in the mode switcher in every workspace.
+
+---
+
+### Workspace installation
+
+Use this approach if you want the mode to apply only when Bob is opened inside this cloned repository.
+
 **1. Install MCP server dependencies:**
 
 ```bash
@@ -34,7 +140,13 @@ cd .bob/mcp-servers/oh-exchange
 npm install
 ```
 
-**2. Set your Exchange credentials** (add to `~/.zshrc` or a sourced credentials file):
+The workspace-local `.bob/custom_modes.yaml` and `.bob/mcp.json` are already committed to this repo and will be picked up automatically by Bob Shell when this directory is the open workspace.
+
+---
+
+### Credentials (both installation methods)
+
+**Set your Exchange credentials** (add to `~/.zshrc` or `~/.bashrc`, or use a sourced credentials file):
 
 ```bash
 export HZN_EXCHANGE_URL="http://your-exchange:3090/v1"
@@ -49,7 +161,9 @@ export HZN_FSS_CSSURL="http://css.example.com:9443"   # model management
 export HZN_AGBOT_URL="http://agbot.example.com:3111"  # agreement bot
 ```
 
-**3. (Optional) Install OpenSpec CLI** for spec-driven change workflows:
+See [PREREQUISITES.md](PREREQUISITES.md) for the full credentials guide, including the recommended [`oh-cred`](https://github.com/joewxboy/oh-cred) vault-backed broker for multi-hub setups.
+
+**(Optional) Install OpenSpec CLI** for spec-driven change workflows:
 
 ```bash
 npm install -g openspec
@@ -97,7 +211,7 @@ Five domain skills are loaded automatically when relevant:
 
 ## Testing
 
-**Run all prerequisite and syntax checks:**
+**Run all prerequisite and syntax checks** (workspace install):
 ```bash
 make check
 ```
@@ -107,13 +221,21 @@ make check
 make test
 ```
 
-**Quick validation checklist:**
+**Quick validation — workspace install:**
 ```bash
 node --check .bob/mcp-servers/oh-exchange/index.js  # syntax
 cat .bob/custom_modes.yaml                           # mode definition
 cat .bob/mcp.json                                    # MCP config
 ls .bob/skills/oh-*/SKILL.md                         # skills present
-ls openspec/specs/*/spec.md                          # main specs synced
+```
+
+**Quick validation — global install:**
+```bash
+node --check ~/.bob/mcp-servers/oh-exchange/index.js     # syntax
+grep "oh-dev" ~/.bob/settings/custom_modes.yaml          # mode present
+grep "open-horizon-exchange" ~/.bob/mcp.json             # MCP entry present
+ls ~/.bob/skills/oh-*/SKILL.md                           # skills present
+ls ~/.bob/commands/opsx-*.md                             # slash commands present
 ```
 
 ## Repository Structure
